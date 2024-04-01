@@ -28,7 +28,7 @@ jobs:
         name: Terraform Cheks
         defaults:
           run:
-            working-directory: src
+            working-directory: cloud-infra
 
         steps:
           - uses: actions/checkout@v3
