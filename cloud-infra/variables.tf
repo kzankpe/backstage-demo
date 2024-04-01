@@ -8,15 +8,15 @@ variable "location" {
 
 variable "loc_abbreviation" {
   description = "Location abbreviation for resource naming"
-  default = "we"
+  default     = "we"
 }
 
 variable "prefix" {
   description = "Prefix for the resource naming"
-  default = "kz"
+  default     = "kz"
 }
 
 variable "env_type" {
   description = "Environment Type abbreviation."
-  default = "poc"
+  default     = "poc"
 }

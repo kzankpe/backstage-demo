@@ -29,7 +29,6 @@ resource "azurerm_container_app_environment" "this" {
 resource "azurerm_container_app" "this" {
   name                         = azurecaf_name.container_app_name.result
   resource_group_name          = azurerm_resource_group.this.name
-  location                     = azurerm_resource_group.this.location
   revision_mode                = "Single"
   container_app_environment_id = azurerm_container_app_environment.this.id
 
