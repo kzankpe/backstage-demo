@@ -68,13 +68,13 @@ resource "azurerm_key_vault" "this" {
 }
 
 resource "azurerm_key_vault_secret" "sql_admin_name" {
-  name = "sql_admin_name"
+  name = upper("sql-admin-name")
   value = random_password.sql_admin_name.result
   key_vault_id = azurerm_key_vault.this.id
 }
 
 resource "azurerm_key_vault_secret" "sql_admin_pwd" {
-  name = "sql_admin_pwd"
+  name = upper("sql-admin-pwd")
   value = random_password.sql_admin_pwd.result
   key_vault_id = azurerm_key_vault.this.id
 }
@@ -87,9 +87,9 @@ resource "azurerm_postgresql_server" "this" {
   administrator_login              = random_password.sql_admin_name.result
   administrator_login_password     = random_password.sql_admin_pwd.result
   version                          = "11"
-  storage_mb                       = 5000
+  storage_mb                       = 5120
   auto_grow_enabled                = true
-  backup_retention_days            = 5
+  backup_retention_days            = 7
   geo_redundant_backup_enabled     = false
   public_network_access_enabled    = true
   ssl_enforcement_enabled          = true
