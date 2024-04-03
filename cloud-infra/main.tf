@@ -40,6 +40,13 @@ resource "azurerm_container_app" "this" {
       memory = "0.5Gi"
     }
   }
+  ingress {
+    target_port = 80
+    external_enabled = true
+    traffic_weight {
+      percentage = 100
+    }
+  }
 
 }
 
