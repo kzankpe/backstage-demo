@@ -8,6 +8,12 @@ terraform {
       source  = "aztfmod/azurecaf"
       version = "=1.2.28"
     }
+
+    random = {
+      source  = "hashicorp/random"
+      version = "=3.4.3"
+    }
+
   }
   backend "azurerm" {
 
