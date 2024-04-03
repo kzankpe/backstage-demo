@@ -44,7 +44,8 @@ resource "azurerm_container_app" "this" {
 }
 
 resource "random_password" "sql_admin_name" {
-  length = 20
+  length  = 20
+  special = false
 }
 
 resource "random_password" "sql_admin_pwd" {
@@ -68,14 +69,14 @@ resource "azurerm_key_vault" "this" {
 }
 
 resource "azurerm_key_vault_secret" "sql_admin_name" {
-  name = upper("sql-admin-name")
-  value = random_password.sql_admin_name.result
+  name         = upper("sql-admin-name")
+  value        = random_password.sql_admin_name.result
   key_vault_id = azurerm_key_vault.this.id
 }
 
 resource "azurerm_key_vault_secret" "sql_admin_pwd" {
-  name = upper("sql-admin-pwd")
-  value = random_password.sql_admin_pwd.result
+  name         = upper("sql-admin-pwd")
+  value        = random_password.sql_admin_pwd.result
   key_vault_id = azurerm_key_vault.this.id
 }
 

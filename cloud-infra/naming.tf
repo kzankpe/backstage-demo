@@ -39,17 +39,17 @@ resource "azurecaf_name" "container_app_name" {
 }
 
 resource "azurecaf_name" "key_vault_name" {
-  name = var.loc_abbreviation
+  name          = var.loc_abbreviation
   resource_type = "azurerm_key_vault"
-  prefixes = [ var.prefix ]
-  separator = ""
-  suffixes = [ var.env_type ]
+  prefixes      = [var.prefix]
+  separator     = ""
+  suffixes      = [var.env_type]
 }
 
 resource "azurecaf_name" "postgresql_name" {
-  name = var.loc_abbreviation
+  name          = var.loc_abbreviation
   resource_type = "azurerm_postgresql_server"
-  prefixes = [ var.prefix ]
-  separator = ""
-  suffixes = [ var.env_type ]
+  prefixes      = [var.prefix]
+  separator     = ""
+  suffixes      = [var.env_type]
 }
