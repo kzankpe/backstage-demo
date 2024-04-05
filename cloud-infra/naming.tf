@@ -53,3 +53,11 @@ resource "azurecaf_name" "postgresql_name" {
   separator     = ""
   suffixes      = [var.env_type]
 }
+
+resource "azurecaf_name" "postgresql_database_name" {
+  name          = var.loc_abbreviation
+  resource_type = "azurerm_postgresql_database"
+  prefixes      = [var.prefix]
+  separator     = ""
+  suffixes      = [var.env_type]
+}

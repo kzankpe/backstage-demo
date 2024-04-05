@@ -104,3 +104,11 @@ resource "azurerm_postgresql_server" "this" {
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
 }
+
+resource "azurerm_postgresql_database" "this" {
+  name                = azurecaf_name.postgresql_database_name.result
+  resource_group_name = azurerm_resource_group.this.name
+  server_name         = azurerm_postgresql_server.this.name
+  charset             = "UTF8"
+  collation           = "en-US"
+}
