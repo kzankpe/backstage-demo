@@ -32,6 +32,7 @@ resource "azurerm_container_app" "this" {
   revision_mode                = "Single"
   container_app_environment_id = azurerm_container_app_environment.this.id
 
+
   template {
     container {
       name   = "test"
@@ -103,4 +104,15 @@ resource "azurerm_postgresql_server" "this" {
   public_network_access_enabled    = true
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
+}
+
+resource "azurerm_postgresql_database" "this" {
+  name                = azurecaf_name.postgresql_database_name.result
+  resource_group_name = azurerm_resource_group.this.name
+  server_name         = azurerm_postgresql_server.this.name
+  charset             = "UTF8"
+  collation           = "en-US"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
