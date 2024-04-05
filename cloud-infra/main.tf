@@ -32,6 +32,7 @@ resource "azurerm_container_app" "this" {
   revision_mode                = "Single"
   container_app_environment_id = azurerm_container_app_environment.this.id
 
+
   template {
     container {
       name   = "test"
@@ -111,4 +112,7 @@ resource "azurerm_postgresql_database" "this" {
   server_name         = azurerm_postgresql_server.this.name
   charset             = "UTF8"
   collation           = "en-US"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
